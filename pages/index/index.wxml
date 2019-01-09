@@ -1,0 +1,9 @@
+<view>
+  <view class="card" wx:for="{{ images }}" wx:for-item="image" wx:key="*this" >
+    <image src="{{ image }}" mode="aspectFit" />
+    <view class="button-share" bindtap="onTapShare" >like</view>
+  </view>
+  <view class="loading" >
+    <text>~ 正在加载 ~</text>
+  </view>
+</view>
