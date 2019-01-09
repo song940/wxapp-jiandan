@@ -1,6 +1,6 @@
 <view>
   <view class="card" wx:for="{{ images }}" wx:for-item="image" wx:key="*this" >
-    <image src="{{ image }}" mode="aspectFit" />
+    <image src="{{ image }}" mode="aspectFit" bindtap="onTapPreview" data-src="{{ image }}" />
     <view class="button-share" bindtap="onTapShare" >like</view>
   </view>
   <view class="loading" >

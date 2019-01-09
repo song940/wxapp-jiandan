@@ -11,6 +11,12 @@ Page({
   onTapShare(){
     wx.showToast();
   },
+  onTapPreview(e){
+    const { dataset } = e.currentTarget;
+    const { src: current } = dataset;
+    const { images: urls } = this.data;
+    wx.previewImage({ urls, current });
+  },
   onReachBottom(){
     var { page, images } = this.data;
     const offset = ++page * 10;
