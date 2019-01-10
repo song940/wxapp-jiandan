@@ -1,9 +1,9 @@
 <view>
   <view class="card" wx:for="{{ images }}" wx:for-item="image" wx:key="*this" >
     <image src="{{ image }}" mode="aspectFit" bindtap="onTapPreview" data-src="{{ image }}" />
-    <view class="button-share" bindtap="onTapShare" >like</view>
+    <button class="button-share" open-type="share" data-url="{{ image }}" >Share</button>
   </view>
   <view class="loading" >
-    <text>~ 正在加载 ~</text>
+    <text>~~ 正在加载 ~~</text>
   </view>
 </view>

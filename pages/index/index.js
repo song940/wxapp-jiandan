@@ -2,14 +2,16 @@ const jiandan = require('../../data/jiandan-meizi.js')
 
 Page({
   data: {
-    page: 0
+    page: 0,
+    images: jiandan.slice(0, 10)
   },
-  onLoad(){
-    const images = jiandan.slice(0, 10);
-    this.setData({ images });
-  },
-  onTapShare(){
-    wx.showToast();
+  onLoad(query){
+    const { url } = query;
+    const { images } = this.data;
+    if(url){
+      images.unshift(url);
+      this.setData({ images });
+    }
   },
   onTapPreview(e){
     const { dataset } = e.currentTarget;
@@ -22,5 +24,13 @@ Page({
     const offset = ++page * 10;
     const next = jiandan.slice(offset, offset + 10);
     this.setData({ images: images.concat(next), page });
+  },
+  onShareAppMessage(source){
+    const { dataset } = source.target;
+    const { url: imageUrl } = dataset;
+    return { 
+      path: '/pages/index/index?url=' + imageUrl,
+      imageUrl 
+    };
   }
 });
